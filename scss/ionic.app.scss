@@ -1,0 +1,146 @@
+/*
+To customize the look and feel of Ionic, you can override the variables
+in ionic's _variables.scss file.
+
+For example, you might change some of the default colors:
+
+$light:                           #fff !default;
+$stable:                          #f8f8f8 !default;
+$positive:                        #387ef5 !default;
+$calm:                            #11c1f3 !default;
+$balanced:                        #33cd5f !default;
+$energized:                       #ffc900 !default;
+$assertive:                       #ef473a !default;
+$royal:                           #886aea !default;
+$dark:                            #444 !default;
+*/
+
+$positive: #CE4A3B !default;
+$accentGrey: #e6e6e6;
+// The path for our ionicons font files, relative to the built CSS in www/css
+$ionicons-font-path: "../lib/ionic/fonts" !default;
+// Include all of Ionic
+@import "www/lib/ionic/scss/ionic";
+@import "scss/fonts.scss";
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: "LatoLight";
+}
+img {
+	width: 100%;
+}
+.padding {
+	padding: 15px;
+	a {
+		color: $positive;
+		text-decoration: none;
+		font-family: "LatoBold";
+	}
+	a.button {
+		font-family: "LatoLight";
+	}
+}
+.redbg {
+	background: $positive;
+}
+.scaleVid {
+	position: relative;
+	height: 0;
+}
+.ratio16x9 {
+	padding-bottom: 56.25%;
+}
+.ratio4x3 {
+	padding-bottom: 75%;
+}
+.audioPlayerRatio {
+	padding-bottom: 15%;
+}
+.scaleVid {
+	background: url(../img/loading.gif) center center no-repeat #9d9d9d;
+	background-size: 20%;
+}
+.scaleVid divx,
+.scaleVid object,
+.scaleVid embed,
+.scaleVid iframe,
+.scaleVid video {
+	position: absolute !important;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+.has-tabs,
+.bar-footer.has-tabs {
+	bottom: 59px;
+}
+.threeleaf {
+	font-family: 'Threeleaf';
+	font-size: 1.5em;
+	vertical-align: -.15em;
+	font-weight: normal;
+}
+.threeleaf-separator {
+	color: $light;
+	font-size: 18px;
+	text-align: center;
+	.threeleaf {
+		vertical-align: -.13em;
+	}
+	background: $positive;
+	line-height: 30px;
+	padding: 10px;
+	margin-top: -5px;
+}
+.title-image {
+	margin-top: 7px;
+	height: 30px;
+	width: auto;
+}
+.tabs {
+	height: 60px;
+}
+.tabs-icon-top > .tabs .tab-item,
+.tabs-icon-top.tabs .tab-item,
+.tabs-icon-bottom > .tabs .tab-item,
+.tabs-icon-bottom.tabs .tab-item {
+	line-height: 32px;
+}
+.tab-item .threeleaf {
+	font-size: 40px;
+	line-height: 38px;
+}
+.threeleaf-home:before {
+	content: "oh";
+}
+.threeleaf-sermons:before {
+	content: "oZ";
+}
+.threeleaf-groups:before {
+	content: "oC";
+}
+.threeleaf-events:before {
+	content: "oe";
+}
+.threeleaf-live:before {
+	content: "oz";
+}
+.community_post {
+	padding: 15px 15px 0;
+	position: relative;
+}
+.community_post h4 {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	margin: 0;
+	padding: 5px 2%;
+	width: 100%;
+	color: #fff;
+}
