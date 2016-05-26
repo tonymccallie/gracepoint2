@@ -32,10 +32,10 @@
 		<plugin name="org.apache.cordova.network-information" />
 		<plugin name="org.apache.cordova.splashscreen" />
 		<plugin name="org.apache.cordova.vibration" />
-		<plugin name="com.ionic.keyboard" version="1.0.2" />
+		<plugin name="com.ionic.keyboard" source="pgb" />
 		<plugin name="nl.x-services.plugins.socialsharing" />
-		<plugin name="com.phonegap.plugins.pushplugin" version="2.4.0" />
-		<plugin name="com.ionic.deploy" version="0.1.6" />
+		<plugin name="com.phonegap.plugins.pushplugin"  />
+		<plugin name="com.ionic.deploy" source="pgb" />
 		<feature name="StatusBar">
 			<param name="ios-package" value="CDVStatusBar" onload="true" />
 		</feature>
