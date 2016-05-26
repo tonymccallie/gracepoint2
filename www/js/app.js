@@ -27,7 +27,7 @@ angular.module('greyback', ['ionic', 'greyback.controllers', 'greyback.services'
 			// org.apache.cordova.statusbar required
 			StatusBar.styleDefault();
 		}
-		//ImgCache.$init();
+		ImgCache.$init();
 	});
 })
 
