@@ -47,8 +47,7 @@ angular.module('greyback.services', [])
 	
 	self.latest = function () {
 		console.log('CommunityService.latest');
-		console.warn( $data.get(config.latest, self));
-		return $data.get(config.latest);
+		return $data.get(config.latest, self);
 	}
 	
 	self.get = function(postIndex) {
