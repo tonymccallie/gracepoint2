@@ -6,7 +6,8 @@ angular.module('greyback.services', [])
 	var config = {
 		latest: {
 			name: 'NewsArticle.latest',
-			url: '/ajax/plugin/news/news_articles/json/limit:4/category:3'
+			url: '/ajax/plugin/news/news_articles/json/limit:4/category:3',
+			variable: 'banners'
 		}
 	};
 
@@ -16,22 +17,23 @@ angular.module('greyback.services', [])
 
 	self.populate = function () {
 		console.log('NewsService.populate');
-		return $data.populate(config.latest);
+		return $data.populate(config.latest, self);
 	}
 	
 	self.latest = function () {
 		console.log('NewsService.latest');
-		return $data.get(config.latest);
+		return $data.get(config.latest, self);
 	}
 })
 
-.service('CommunityService', function ($data) {
+.service('CommunityService', function ($q, $data, $state, $location) {
 	console.warn('CommunityService');
 	var self = this;
 	var config = {
 		latest: {
 			name: 'CommunityPost.latest',
-			url: '/ajax/plugin/community/community_posts/json'
+			url: '/ajax/plugin/community/community_posts/json',
+			variable: 'posts'
 		}
 	};
 	
@@ -39,12 +41,25 @@ angular.module('greyback.services', [])
 	
 	self.populate = function () {
 		console.log('CommunityService.populate');
-		return $data.populate(config.latest);
+		var results = $data.populate(config.latest, self);
+		return results;
 	}
 	
 	self.latest = function () {
 		console.log('CommunityService.latest');
+		console.warn( $data.get(config.latest, self));
 		return $data.get(config.latest);
+	}
+	
+	self.get = function(postIndex) {
+		console.log(['CommunityService.get',postIndex]);
+		if(self.posts.length) {
+			return self.posts[postIndex];	
+		} else {
+			$location.path('#/menu/tabs/home');
+			$location.replace();
+			return null;
+		}
 	}
 })
 

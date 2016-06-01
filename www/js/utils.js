@@ -6,7 +6,7 @@ angular.module('greyback.utils', [])
 
 	self.values = {};
 
-	self.populate = function ($config) {
+	self.populate = function ($config, obj) {
 		console.log(['$data.populate:' + $config.name, $config]);
 		var deferred = $q.defer();
 		if (typeof self.values[$config.name] == 'undefined') {
@@ -27,6 +27,7 @@ angular.module('greyback.utils', [])
 						deferred.resolve(remoteRecords);
 					});
 				}
+				obj[$config.variable] = self.values[$config.name];
 			});
 		} else {
 			console.log($config.name + ': had values');
@@ -36,12 +37,13 @@ angular.module('greyback.utils', [])
 		return deferred.promise;
 	}
 
-	self.get = function ($config) {
+	self.get = function ($config, obj) {
 		console.log(['$data.get:' + $config.name, $config]);
 		var deferred = $q.defer();
 		self.remote($config.name, $config.url).then(function (remoteRecords) {
 			console.log($config.name + ': got remote');
 			self.values[$config.name] = remoteRecords;
+			obj[$config.variable] = self.values[$config.name];
 			deferred.resolve(remoteRecords);
 		});
 

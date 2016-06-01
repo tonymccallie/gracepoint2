@@ -35,6 +35,12 @@ angular.module('greyback.controllers', [])
 	}
 	
 	$scope.$on("$ionicView.loaded", function () {
-		$scope.refresh();
+//		console.error('view loaded');
+//		$scope.refresh();
 	});
+})
+
+.controller('PostController', function($scope, $q, post) {
+	console.warn('PostController');
+	$scope.post = post;
 });

@@ -1,0 +1,29 @@
+<ion-view>
+	<ion-content>
+		<div class="scaleVid ratio16x9">
+			<div ng-switch on="post.CommunityPost.type">
+				<div ng-switch-when="video">
+					<video id="post_video_player" controls="controls" poster="{{imageDir+post.MediaVideo.preview}}/width:800/height:450/crop:true/zoom:auto">
+						<source ng-src="{{DOMAIN+'/play/vid/'+post.MediaVideo.id+'/play.mp4' | trusted}}">
+					</video>
+				</div>
+				<div ng-switch-when="gallery">
+					<ion-slide-box  ng-if="post.CommunityPicture.length > 0" does-continue="true" auto-play="true">
+						<ion-slide ng-repeat="picture in post.CommunityPicture">
+							<div>
+								<img ng-if="picture.MediaImage.filename.length > 0" img-cache ic-src="{{imageDir+picture.MediaImage.filename}}/width:800/height:450/crop:true/zoom:auto/{{picture.MediaImage.filename}}" style="width: 100%;" />
+							</div>
+						</ion-slide>
+					</ion-slide-box>
+				</div>
+				<div ng-switch-default>
+					<img ng-if="post.MediaImage.filename !== null" img-cache ic-src="{{imageDir+post.MediaImage.filename }}/width:800/height:450/crop:true/zoom:auto" style="width: 100%;" />
+				</div>
+			</div>
+		</div>
+		<div class="threeleaf-separator"><span class="threeleaf">oZ</span> {{post.CommunityPost.title}}</div>
+		<div class="padding">
+			{{post.body}}
+		</div>
+	</ion-content>
+</ion-view>

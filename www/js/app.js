@@ -13,7 +13,7 @@ if (devtest) {
 
 angular.module('greyback', ['ionic', 'greyback.controllers', 'greyback.services', 'greyback.utils', 'ImgCache'])
 
-.run(function ($ionicPlatform) {
+.run(function ($ionicPlatform, ImgCache) {
 	$ionicPlatform.ready(function () {
 		console.log('$ionicPlatform.ready');
 		// Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -79,6 +79,37 @@ angular.module('greyback', ['ionic', 'greyback.controllers', 'greyback.services'
 			}
 		}
 	})
+	
+	.state('menu.tabs.post', {
+		url: '/post/:postIndex',
+		views: {
+			'tab-static': {
+				templateUrl: 'templates/home/post.html',
+				controller: 'PostController'
+			}
+		},
+		resolve: {
+			post: function(CommunityService, $stateParams) {
+				console.log('State.menu.tabs.home.post.resolve[post]');
+				return CommunityService.get($stateParams.postIndex);
+			}
+		}
+	}) 
+	
+//	.state('menu.tabs.article',{
+//		url: '/article/:articleIndex',
+//		views: {
+//			'tab-home': {
+//				templateUrl: 'templates/article.html',
+//				controller: 'NewsController'
+//			}
+//		},
+//		resolve: {
+//			article: function(NewsService, $stateParams) {
+//				return NewsService.article($stateParams.articleIndex)
+//			}
+//		}
+//	})
 
 	.state('menu.tabs.sermons', {
 		url: '/sermons',
