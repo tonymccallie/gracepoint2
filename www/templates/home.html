@@ -8,7 +8,7 @@
 			<ion-slide-box does-continue="true" auto-play="true">
 				<ion-slide ng-repeat="banner in banners">
 					<div>
-						<a ui-sref="menu.tabs.banner({bannerIndex: $index})">
+						<a ui-sref="menu.tabs.article({articleIndex: $index})">
 							<img ng-if="banner.MediaImage.filename.length > 0" img-cache ic-src="{{imageDir+banner.MediaImage.filename}}/width:800/height:450/crop:true/zoom:auto/{{banner.MediaImage.filename}}" style="width: 100%;" />
 						</a>
 					</div>

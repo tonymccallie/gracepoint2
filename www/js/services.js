@@ -24,6 +24,17 @@ angular.module('greyback.services', [])
 		console.log('NewsService.latest');
 		return $data.get(config.latest, self);
 	}
+	
+	self.article = function(articleIndex) {
+		console.log(['NewsService.get',articleIndex]);
+		if(self.banners.length) {
+			return self.banners[articleIndex];	
+		} else {
+			$location.path('#/menu/tabs/home');
+			$location.replace();
+			return null;
+		}
+	}
 })
 
 .service('CommunityService', function ($q, $data, $state, $location) {
@@ -50,7 +61,7 @@ angular.module('greyback.services', [])
 		return $data.get(config.latest, self);
 	}
 	
-	self.get = function(postIndex) {
+	self.post = function(postIndex) {
 		console.log(['CommunityService.get',postIndex]);
 		if(self.posts.length) {
 			return self.posts[postIndex];	

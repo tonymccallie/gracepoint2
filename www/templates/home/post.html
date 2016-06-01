@@ -22,8 +22,6 @@
 			</div>
 		</div>
 		<div class="threeleaf-separator"><span class="threeleaf">oZ</span> {{post.CommunityPost.title}}</div>
-		<div class="padding">
-			{{post.body}}
-		</div>
+		<div ng-bind-html="trust(post.CommunityPost.body)" class="padding"></div>
 	</ion-content>
 </ion-view>

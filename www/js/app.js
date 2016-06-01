@@ -63,7 +63,7 @@ angular.module('greyback', ['ionic', 'greyback.controllers', 'greyback.services'
 	.state('menu.tabs.home', {
 		url: '/home',
 		views: {
-			'tab-static': {
+			'tab-home': {
 				templateUrl: "templates/home.html",
 				controller: 'HomeController'
 			}
@@ -83,7 +83,7 @@ angular.module('greyback', ['ionic', 'greyback.controllers', 'greyback.services'
 	.state('menu.tabs.post', {
 		url: '/post/:postIndex',
 		views: {
-			'tab-static': {
+			'tab-home': {
 				templateUrl: 'templates/home/post.html',
 				controller: 'PostController'
 			}
@@ -91,25 +91,25 @@ angular.module('greyback', ['ionic', 'greyback.controllers', 'greyback.services'
 		resolve: {
 			post: function(CommunityService, $stateParams) {
 				console.log('State.menu.tabs.home.post.resolve[post]');
-				return CommunityService.get($stateParams.postIndex);
+				return CommunityService.post($stateParams.postIndex);
 			}
 		}
 	}) 
 	
-//	.state('menu.tabs.article',{
-//		url: '/article/:articleIndex',
-//		views: {
-//			'tab-home': {
-//				templateUrl: 'templates/article.html',
-//				controller: 'NewsController'
-//			}
-//		},
-//		resolve: {
-//			article: function(NewsService, $stateParams) {
-//				return NewsService.article($stateParams.articleIndex)
-//			}
-//		}
-//	})
+	.state('menu.tabs.article',{
+		url: '/article/:articleIndex',
+		views: {
+			'tab-home': {
+				templateUrl: 'templates/home/article.html',
+				controller: 'ArticleController'
+			}
+		},
+		resolve: {
+			article: function(NewsService, $stateParams) {
+				return NewsService.article($stateParams.articleIndex)
+			}
+		}
+	})
 
 	.state('menu.tabs.sermons', {
 		url: '/sermons',

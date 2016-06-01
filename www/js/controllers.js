@@ -1,6 +1,6 @@
 angular.module('greyback.controllers', [])
 
-.controller('AppController', function ($scope, $ionicModal, $timeout) {
+.controller('AppController', function ($scope, $sce, $ionicModal, $timeout) {
 	console.warn('AppController');
 	// With the new view caching in Ionic, Controllers are only called
 	// when they are recreated or on app start, instead of every page change.
@@ -12,35 +12,44 @@ angular.module('greyback.controllers', [])
 	$scope.DOMAIN = DOMAIN;
 	$scope.imageDir = DOMAIN + '/img/thumb/';
 
+	$scope.trust = function (snippet) {
+		return $sce.trustAsHtml(snippet);
+	};
+
 })
 
 .controller('HomeController', function ($scope, $q, $ionicSlideBoxDelegate, banners, posts, NewsService, CommunityService, ImgCache) {
 	console.warn('HomeController');
 	$scope.banners = banners;
 	$scope.posts = posts;
-	
-	$scope.refresh = function() {
+
+	$scope.refresh = function () {
 		console.log('HomeController.refresh');
-		ImgCache.clearCache(function() {
+		ImgCache.clearCache(function () {
 			console.log('clearCache');
 		});
-		$q.all([NewsService.latest(),CommunityService.latest()]).then(function(data) {
+		$q.all([NewsService.latest(), CommunityService.latest()]).then(function (data) {
 			console.log('HomeController.refresh.all');
 			$scope.banners = data[0];
 			$scope.posts = data[1];
 			$ionicSlideBoxDelegate.update();
 			$scope.$broadcast('scroll.refreshComplete');
 		});;
-		
+
 	}
-	
+
 	$scope.$on("$ionicView.loaded", function () {
-//		console.error('view loaded');
-//		$scope.refresh();
+		//		console.error('view loaded');
+		//		$scope.refresh();
 	});
 })
 
-.controller('PostController', function($scope, $q, post) {
+.controller('PostController', function ($scope, $q, post) {
 	console.warn('PostController');
 	$scope.post = post;
+})
+
+.controller('ArticleController', function ($scope, $q, article) {
+	console.warn('ArticleController');
+	$scope.article = article;
 });
