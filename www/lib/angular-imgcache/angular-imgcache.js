@@ -3,7 +3,6 @@ angular.module('ImgCache', [])
 .provider('ImgCache', function() {
 
     ImgCache.$init = function() {
-
         ImgCache.init(function() {
             ImgCache.$deferred.resolve();
         }, function() {
@@ -29,7 +28,6 @@ angular.module('ImgCache', [])
         if(!this.manualInit) {
             ImgCache.$init();
         }
-
         return ImgCache;
     }];
 

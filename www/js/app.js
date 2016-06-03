@@ -34,9 +34,10 @@ angular.module('greyback', ['ionic', 'greyback.controllers', 'greyback.services'
 .config(function ($stateProvider, $urlRouterProvider, ImgCacheProvider) {
 	ImgCacheProvider.setOptions({
 		debug: true,
-		usePersistentCache: true,
-		manualInit: true
+		usePersistentCache: true
 	});
+	
+	ImgCacheProvider.manualInit = true;
 
 	// ImgCache library is initialized automatically,
 	// but set this option if you are using platform like Ionic -

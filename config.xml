@@ -2,10 +2,10 @@
 	<widget id="=net.greyback.gracepoint" version="2.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
 		<name>Gracepoint Church</name>
 		<description>
-			An Ionic Framework and Cordova project.
+			Gracepoint Church, Coppell, TX
 		</description>
-		<author email="you@example.com" href="http://example.com.com/">
-			Your Name Here
+		<author email="info@greyback.net" href="http://greyback.net/">
+			GreyBack Labs, LLP
 		</author>
 		<content src="index.html" />
 		<access origin="*" />
